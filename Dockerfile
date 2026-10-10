@@ -1,4 +1,3 @@
-```dockerfile
 FROM maven:3.9-eclipse-temurin-17 AS build
 
 WORKDIR /app
@@ -22,4 +21,3 @@ COPY --from=build /app/target/employee-time-management.war /usr/local/tomcat/web
 EXPOSE 10000
 
 CMD ["sh", "-c", "sed -i 's/port=\"8080\"/port=\"'\"${PORT:-10000}\"'\"/' \"$CATALINA_HOME/conf/server.xml\" && exec \"$CATALINA_HOME/bin/catalina.sh\" run"]
-```
